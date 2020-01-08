@@ -1,0 +1,4 @@
+---
+- hosts: 3.136.209.152
+  roles:
+    - centos

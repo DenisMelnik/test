@@ -1,0 +1,28 @@
+---
+# tasks file for centos
+
+- name: Private ip address
+  debug: var=ansible_all_ipv4_addresses
+
+- name: Get public ip address
+  ipify_facts:
+  register: public_ip
+
+- name: Show public ip
+  debug: msg="{{ public_ip }}"
+
+- name: Hostname
+  debug: var=ansible_hostname
+
+- name: CPU cores
+  debug: var=ansible_processor_vcpus
+
+- name: Memory size
+  debug: var=ansible_memtotal_mb
+
+- name: Get running processes
+  shell: ps -ef
+  register: ps_cmd
+
+- name: Show running processes
+  debug: var=ps_cmd.stdout_lines
